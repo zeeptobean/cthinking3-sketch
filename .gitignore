@@ -1,0 +1,4 @@
+.env
+.venv
+ailog_*
+knowledge_ext.json
