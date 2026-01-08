@@ -24,11 +24,8 @@ class ProjectSchema(BaseModel):
     skills_practiced: List[str] = Field(description="List of user's current skills used in this project")
     new_skills_to_gain: List[str] = Field(description="List of new skills/knowledge this project introduces")
 
-def generate_ict_projects(skill_list: list[str], knowledge_list: list[str], num_projects=5):
-
-    # 3. PROMPT ENGINEERING
-    # We explicitly instruct the model to use the ESCO framework context and
-    # balance "practicing" with "learning new things."
+# return (bool, str)
+def generate_ict_projects(skill_list: list[str], knowledge_list: list[str], num_projects=5) -> Tuple[bool, str]:
     prompt = f"""
     Role: You are an expert ICT Career Coach and Technical Mentor.
 
@@ -61,7 +58,6 @@ def generate_ict_projects(skill_list: list[str], knowledge_list: list[str], num_
         # 4. GENERATION
         response = client.models.generate_content(
             model="gemma-3-27b-it",
-            # model="gemini-flash-lite-latest",
             contents=prompt,
             config=genai.types.GenerateContentConfig(
                 temperature=0.2,
@@ -72,11 +68,10 @@ def generate_ict_projects(skill_list: list[str], knowledge_list: list[str], num_
             raise ValueError("No response text received.")
 
         raw_text = response.text
-        cleaned_text = re.sub(r"```json\n?|```", "", raw_text).strip()
-        data = json.loads(cleaned_text)
-        return data
+        cleaned_json_text = re.sub(r"```json\n?|```", "", raw_text).strip()
+        return (True, cleaned_json_text)
     except Exception as e:
-        return f"Error occurred: {e}"
+        return (False, f"Error occurred: {e}")
 
 # --- MAIN EXECUTION ---
 if __name__ == "__main__":
@@ -106,5 +101,11 @@ if __name__ == "__main__":
     ]
 
 
-    suggestions = generate_ict_projects(user_skill, user_knowledge, num_projects=4)
-    print(suggestions)
+    status, string = generate_ict_projects(user_skill, user_knowledge)
+    if(status):
+        data = json.loads(string)
+        projects_json = data.get("projects", [])
+        print(projects_json)
+        projects = [ProjectSchema(**project) for project in projects_json]
+    else:
+        print(string)
