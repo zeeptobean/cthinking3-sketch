@@ -2,3 +2,4 @@
 .venv
 ailog_*
 knowledge_ext.json
+.vscode

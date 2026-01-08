@@ -3,15 +3,19 @@ import os
 from dotenv import load_dotenv
 from google import genai
 import time
+import json
+
+from .datatype import *
 
 load_dotenv()
 
 API_KEY = os.getenv("GOOGLE_GENAI_API_KEY")
-THINKING_BUDGET = 8192
-# THINKING_BUDGET = 4500
+# THINKING_BUDGET = 8192
+THINKING_BUDGET = 0
 TEMPERATURE = 1.5
 # MODEL = "gemini-2.5-flash-preview-09-2025"
-MODEL = "gemini-2.5-pro"
+MODEL = "gemma-3-27b-it"
+# MODEL = "gemini-2.5-pro"
 
 system_instruction = '''
 You are a project advisor AI. Your task is to analyze the provided IT job information and the student's skill set, and suggest relevant projects that can help the student bridge the gap between their current skills and those required for the job.
@@ -122,6 +126,7 @@ Given the student knowledge set:
     "Pascal (computer programming)"
 }
 
+You are a project advisor AI. Your task is to analyze the provided IT job information and the student's skill set, and suggest relevant projects that can help the student bridge the gap between their current skills and those required for the job.
 Suggest 5 projects that would help the student bridge the gap between their current knowledge and those required for the job. Priortize essential knowledge first, then optional knowledge that is closely related to the student's existing skills.
 Do not make up knowledges that are not in the provided job information.
 Output in JSON format. Only output like a JSON file. Do not include any Markdown elements or code blocks. (for example ```json ... ```).
@@ -146,26 +151,66 @@ Output format:
 
 client = genai.Client(api_key=API_KEY)
 
-start_time = time.perf_counter()
-response = client.models.generate_content(
-    model=MODEL, 
-    contents=prompt,
-    config=genai.types.GenerateContentConfig(
-        system_instruction=system_instruction,
-        temperature=TEMPERATURE,
-        thinking_config=genai.types.ThinkingConfig(thinking_budget=THINKING_BUDGET)
-    ),
-)
-end_time = time.perf_counter()
+print("Available Models:")
+for model in client.models.list():
+    print(model.name)
 
-try:
-    filename: str = f"ailog_projectprompt_{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')}_{MODEL}_temp{TEMPERATURE}_thinkbudget{THINKING_BUDGET}.txt"
-    with open(filename, 'w') as file:
-        file.write(response.text)
-    print(f"Data written")
-except IOError as e:
-    print(f"An error occurred: {e}")
-    exit(1)
+def call_gemma(prompt: str, temperature: float) -> bool:
+    model = "gemma-3-27b-it"
+    print("Running gemma-3-27b-it...")
+    start_time = time.perf_counter()
+    response = client.models.generate_content(
+        model=model, 
+        contents=prompt,
+        config=genai.types.GenerateContentConfig(
+            temperature=temperature,
+        ),
+    )
+    end_time = time.perf_counter()
+    execution_time = end_time - start_time
+    try:
+        filename: str = f"ailog_projectprompt_{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')}_{model}_temp{temperature}.txt"
+        with open(filename, 'w') as file:
+            file.write(response.text)
+        print(f"Data written. Task took {execution_time:.2f} seconds.")
+    except IOError as e:
+        print(f"An error occurred: {e}")
+        return False
+    return True
 
-execution_time = end_time - start_time
-print(f"The function took {execution_time:.2f} seconds to run.")
+def call_model(model: str, prompt: str, system_instruction: str, thinking_budget: int, temperature: float) -> bool:
+    print(f"Running {model}...")
+    start_time = time.perf_counter()
+    response = client.models.generate_content(
+        model=model, 
+        contents=prompt,
+        config=genai.types.GenerateContentConfig(
+            system_instruction=system_instruction,
+            temperature=temperature,
+            thinking_config=genai.types.ThinkingConfig(thinking_budget=thinking_budget)
+        ),
+    )
+    end_time = time.perf_counter()
+    execution_time = end_time - start_time
+    try:
+        filename: str = f"ailog_projectprompt_{datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')}_{model}_temp{temperature}.txt"
+        with open(filename, 'w') as file:
+            file.write(response.text)
+        print(f"Data written. Task took {execution_time:.2f} seconds.")
+    except IOError as e:
+        print(f"An error occurred: {e}")
+        return False
+    return True
+
+job_profile_list: list[JobProfile] = []
+
+def load_knowledge_ext(filename: str):
+    with open(filename, "r") as file:
+        json_str = file.read()
+    json_root = json.load(json_str)
+    for ele in json_root:
+        job_profile_list.append(JobProfile(ele))
+
+
+if(__name__ == "__main__"):
+    exit(0)

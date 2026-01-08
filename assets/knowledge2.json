@@ -1,0 +1,1984 @@
+{
+  "knowledges": [
+    {
+      "knowledge": "operating systems",
+      "level": 3,
+      "prerequisites": ["computer technology", "hardware architectures"]
+    },
+    {
+      "knowledge": "system backup best practice",
+      "level": 4,
+      "prerequisites": ["data storage", "data protection"]
+    },
+    {
+      "knowledge": "ethical hacking principles",
+      "level": 6,
+      "prerequisites": ["cyber security", "attack vectors"]
+    },
+    {
+      "knowledge": "quality assurance methodologies",
+      "level": 4,
+      "prerequisites": ["quality standards", "software design methodologies"]
+    },
+    {
+      "knowledge": "cyber attack counter-measures",
+      "level": 6,
+      "prerequisites": ["cyber security", "attack vectors"]
+    },
+    {
+      "knowledge": "mobile device management",
+      "level": 5,
+      "prerequisites": ["mobile operating systems", "network engineering"]
+    },
+    {
+      "knowledge": "network standards",
+      "level": 3,
+      "prerequisites": ["ICT communications protocols"]
+    },
+    {
+      "knowledge": "internet governance",
+      "level": 4,
+      "prerequisites": ["network standards", "telecom regulations"]
+    },
+    {
+      "knowledge": "security engineering",
+      "level": 7,
+      "prerequisites": ["cyber security", "system design", "ICT encryption"]
+    },
+    {
+      "knowledge": "Internet of Things",
+      "level": 6,
+      "prerequisites": ["network engineering", "embedded systems", "cloud technologies"]
+    },
+    {
+      "knowledge": "ICT network security risks",
+      "level": 5,
+      "prerequisites": ["cyber security", "network engineering"]
+    },
+    {
+      "knowledge": "database development tools",
+      "level": 4,
+      "prerequisites": ["database management systems", "computer programming"]
+    },
+    {
+      "knowledge": "organisational resilience",
+      "level": 5,
+      "prerequisites": ["risk management", "ICT recovery techniques"]
+    },
+    {
+      "knowledge": "cloud security and compliance",
+      "level": 7,
+      "prerequisites": ["cloud technologies", "cyber security", "GDPR"]
+    },
+    {
+      "knowledge": "information confidentiality",
+      "level": 4,
+      "prerequisites": ["data protection", "ethics"]
+    },
+    {
+      "knowledge": "ICT infrastructure",
+      "level": 3,
+      "prerequisites": ["operating systems", "network engineering", "hardware architectures"]
+    },
+    {
+      "knowledge": "cloud monitoring and reporting",
+      "level": 6,
+      "prerequisites": ["cloud technologies", "ICT performance analysis methods"]
+    },
+    {
+      "knowledge": "cyber security",
+      "level": 5,
+      "prerequisites": ["ICT infrastructure", "assessment of risks and threats", "ICT security standards"]
+    },
+    {
+      "knowledge": "ICT security legislation",
+      "level": 3,
+      "prerequisites": ["legal requirements of ICT products"]
+    },
+    {
+      "knowledge": "ICT security standards",
+      "level": 4,
+      "prerequisites": ["ICT security legislation", "network standards"]
+    },
+    {
+      "knowledge": "telecom regulations",
+      "level": 3,
+      "prerequisites": ["ICT security legislation"]
+    },
+    {
+      "knowledge": "ICT encryption",
+      "level": 5,
+      "prerequisites": ["mathematics", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "information security strategy",
+      "level": 6,
+      "prerequisites": ["cyber security", "risk management", "information confidentiality"]
+    },
+    {
+      "knowledge": "computer forensics",
+      "level": 7,
+      "prerequisites": ["operating systems", "data storage", "forensic intelligence"]
+    },
+    {
+      "knowledge": "web application security threats",
+      "level": 6,
+      "prerequisites": ["web programming", "security threats"]
+    },
+    {
+      "knowledge": "building systems monitoring technology",
+      "level": 4,
+      "prerequisites": ["Internet of Things", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "ethics",
+      "level": 1,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "attack vectors",
+      "level": 5,
+      "prerequisites": ["security threats", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "ICT system integration",
+      "level": 5,
+      "prerequisites": ["ICT architectural frameworks", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "computer programming",
+      "level": 3,
+      "prerequisites": ["algorithms", "computer science"]
+    },
+    {
+      "knowledge": "legal requirements of ICT products",
+      "level": 2,
+      "prerequisites": ["ethics"]
+    },
+    {
+      "knowledge": "penetration testing tool",
+      "level": 7,
+      "prerequisites": ["ethical hacking principles"]
+    },
+    {
+      "knowledge": "software anomalies",
+      "level": 4,
+      "prerequisites": ["levels of software testing"]
+    },
+    {
+      "knowledge": "tools for ICT test automation",
+      "level": 5,
+      "prerequisites": ["levels of software testing", "computer programming"]
+    },
+    {
+      "knowledge": "proxy servers",
+      "level": 4,
+      "prerequisites": ["network engineering", "domain name service"]
+    },
+    {
+      "knowledge": "Parrot Security OS",
+      "level": 8,
+      "prerequisites": ["penetration testing tool", "operating systems"]
+    },
+    {
+      "knowledge": "hybrid model",
+      "level": 4,
+      "prerequisites": ["business strategy concepts"]
+    },
+    {
+      "knowledge": "service-oriented modelling",
+      "level": 5,
+      "prerequisites": ["software architecture models", "business process modelling"]
+    },
+    {
+      "knowledge": "Nexpose",
+      "level": 8,
+      "prerequisites": ["penetration testing tool", "network engineering"]
+    },
+    {
+      "knowledge": "Kali Linux",
+      "level": 8,
+      "prerequisites": ["penetration testing tool", "operating systems"]
+    },
+    {
+      "knowledge": "levels of software testing",
+      "level": 4,
+      "prerequisites": ["software anomalies"]
+    },
+    {
+      "knowledge": "Metasploit",
+      "level": 8,
+      "prerequisites": ["penetration testing tool", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "WhiteHat Sentinel",
+      "level": 8,
+      "prerequisites": ["web application security threats", "penetration testing tool"]
+    },
+    {
+      "knowledge": "John The Ripper (penetration testing tool)",
+      "level": 7,
+      "prerequisites": ["penetration testing tool", "operating systems"]
+    },
+    {
+      "knowledge": "Wireshark",
+      "level": 6,
+      "prerequisites": ["network engineering", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "Maltego",
+      "level": 7,
+      "prerequisites": ["computer forensics", "network engineering"]
+    },
+    {
+      "knowledge": "OWASP ZAP",
+      "level": 7,
+      "prerequisites": ["web application security threats", "penetration testing tool"]
+    },
+    {
+      "knowledge": "Cain and Abel (penetration testing tool)",
+      "level": 7,
+      "prerequisites": ["penetration testing tool", "operating systems"]
+    },
+    {
+      "knowledge": "BlackArch",
+      "level": 8,
+      "prerequisites": ["Kali Linux", "penetration testing tool"]
+    },
+    {
+      "knowledge": "Outsourcing model",
+      "level": 4,
+      "prerequisites": ["business strategy concepts"]
+    },
+    {
+      "knowledge": "Nessus",
+      "level": 8,
+      "prerequisites": ["penetration testing tool", "network engineering"]
+    },
+    {
+      "knowledge": "Samurai Web Testing Framework",
+      "level": 8,
+      "prerequisites": ["web application security threats", "penetration testing tool"]
+    },
+    {
+      "knowledge": "Backbox (penetration testing tool)",
+      "level": 8,
+      "prerequisites": ["Kali Linux", "penetration testing tool"]
+    },
+    {
+      "knowledge": "Aircrack (penetration testing tool)",
+      "level": 7,
+      "prerequisites": ["penetration testing tool", "network engineering"]
+    },
+    {
+      "knowledge": "Open source model",
+      "level": 3,
+      "prerequisites": ["copyright legislation"]
+    },
+    {
+      "knowledge": "cloud technologies",
+      "level": 5,
+      "prerequisites": ["ICT infrastructure", "network engineering"]
+    },
+    {
+      "knowledge": "DevOps",
+      "level": 6,
+      "prerequisites": ["Agile development", "tools for software configuration management", "ICT system integration"]
+    },
+    {
+      "knowledge": "Agile project management",
+      "level": 5,
+      "prerequisites": ["project management", "Agile development"]
+    },
+    {
+      "knowledge": "Agile development",
+      "level": 4,
+      "prerequisites": ["software design methodologies"]
+    },
+    {
+      "knowledge": "ICT architectural frameworks",
+      "level": 5,
+      "prerequisites": ["system design", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "internal risk management policy",
+      "level": 4,
+      "prerequisites": ["risk management", "organisational policies"]
+    },
+    {
+      "knowledge": "ICT process quality models",
+      "level": 4,
+      "prerequisites": ["quality standards", "business process modelling"]
+    },
+    {
+      "knowledge": "audit techniques",
+      "level": 4,
+      "prerequisites": ["internal risk management policy", "ICT security standards"]
+    },
+    {
+      "knowledge": "ICT project management methodologies",
+      "level": 5,
+      "prerequisites": ["ICT project management", "Agile project management"]
+    },
+    {
+      "knowledge": "ICT project management",
+      "level": 4,
+      "prerequisites": ["project management", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "decision support systems",
+      "level": 5,
+      "prerequisites": ["business intelligence", "database management systems"]
+    },
+    {
+      "knowledge": "data protection",
+      "level": 4,
+      "prerequisites": ["ICT security legislation", "data storage"]
+    },
+    {
+      "knowledge": "assessment of risks and threats",
+      "level": 4,
+      "prerequisites": ["risk management", "security threats"]
+    },
+    {
+      "knowledge": "risk management",
+      "level": 3,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "World Wide Web Consortium standards",
+      "level": 4,
+      "prerequisites": ["web programming", "network standards"]
+    },
+    {
+      "knowledge": "ICT communications protocols",
+      "level": 2,
+      "prerequisites": ["computer technology"]
+    },
+    {
+      "knowledge": "ICT system user requirements",
+      "level": 3,
+      "prerequisites": ["business processes", "application usability"]
+    },
+    {
+      "knowledge": "control objectives for information and related technology",
+      "level": 5,
+      "prerequisites": ["information security strategy", "ICT security standards"]
+    },
+    {
+      "knowledge": "ICT recovery techniques",
+      "level": 5,
+      "prerequisites": ["system backup best practice", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "Java (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "decentralized application frameworks",
+      "level": 7,
+      "prerequisites": ["blockchain platforms", "computer programming"]
+    },
+    {
+      "knowledge": "JavaScript",
+      "level": 4,
+      "prerequisites": ["computer programming", "web programming"]
+    },
+    {
+      "knowledge": "computer engineering",
+      "level": 3,
+      "prerequisites": ["computer science", "hardware architectures", "electrical engineering"]
+    },
+    {
+      "knowledge": "software frameworks",
+      "level": 4,
+      "prerequisites": ["computer programming", "software architecture models"]
+    },
+    {
+      "knowledge": "integrated development environment software",
+      "level": 3,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "ICT system programming",
+      "level": 4,
+      "prerequisites": ["computer programming", "operating systems"]
+    },
+    {
+      "knowledge": "JavaScript Framework",
+      "level": 5,
+      "prerequisites": ["JavaScript", "software frameworks"]
+    },
+    {
+      "knowledge": "IBM WebSphere",
+      "level": 6,
+      "prerequisites": ["ICT system integration", "Java (computer programming)"]
+    },
+    {
+      "knowledge": "ASP.NET",
+      "level": 5,
+      "prerequisites": ["C#", "web programming"]
+    },
+    {
+      "knowledge": "application usability",
+      "level": 3,
+      "prerequisites": ["human-computer interaction"]
+    },
+    {
+      "knowledge": "Eclipse (integrated development environment software)",
+      "level": 4,
+      "prerequisites": ["integrated development environment software", "Java (computer programming)"]
+    },
+    {
+      "knowledge": "resource description framework query language",
+      "level": 6,
+      "prerequisites": ["query languages", "information architecture"]
+    },
+    {
+      "knowledge": "GDPR",
+      "level": 5,
+      "prerequisites": ["data protection", "ICT security legislation"]
+    },
+    {
+      "knowledge": "check methods",
+      "level": 3,
+      "prerequisites": ["quality standards"]
+    },
+    {
+      "knowledge": "security threats",
+      "level": 3,
+      "prerequisites": ["ICT infrastructure"]
+    },
+    {
+      "knowledge": "query languages",
+      "level": 3,
+      "prerequisites": ["database"]
+    },
+    {
+      "knowledge": "forensic intelligence",
+      "level": 6,
+      "prerequisites": ["computer forensics", "data analytics"]
+    },
+    {
+      "knowledge": "MDX",
+      "level": 5,
+      "prerequisites": ["query languages", "online analytical processing"]
+    },
+    {
+      "knowledge": "information architecture",
+      "level": 4,
+      "prerequisites": ["information structure", "data models"]
+    },
+    {
+      "knowledge": "SPARQL",
+      "level": 6,
+      "prerequisites": ["resource description framework query language", "query languages"]
+    },
+    {
+      "knowledge": "hardware platforms",
+      "level": 2,
+      "prerequisites": ["hardware architectures"]
+    },
+    {
+      "knowledge": "XQuery",
+      "level": 5,
+      "prerequisites": ["query languages"]
+    },
+    {
+      "knowledge": "LINQ",
+      "level": 5,
+      "prerequisites": ["C#", "query languages"]
+    },
+    {
+      "knowledge": "data storage",
+      "level": 2,
+      "prerequisites": ["hardware components"]
+    },
+    {
+      "knowledge": "N1QL",
+      "level": 5,
+      "prerequisites": ["query languages", "NoSQL"]
+    },
+    {
+      "knowledge": "LDAP",
+      "level": 4,
+      "prerequisites": ["ICT communications protocols", "operating systems"]
+    },
+    {
+      "knowledge": "hardware architectures",
+      "level": 2,
+      "prerequisites": ["hardware components"]
+    },
+    {
+      "knowledge": "THC Hydra",
+      "level": 7,
+      "prerequisites": ["penetration testing tool", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "Jenkins (tools for software configuration management)",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "KDevelop",
+      "level": 4,
+      "prerequisites": ["integrated development environment software", "C++"]
+    },
+    {
+      "knowledge": "core banking software",
+      "level": 6,
+      "prerequisites": ["business ICT systems", "database management systems"]
+    },
+    {
+      "knowledge": "business process modelling",
+      "level": 3,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "human-computer interaction",
+      "level": 3,
+      "prerequisites": ["cognitive psychology", "application usability"]
+    },
+    {
+      "knowledge": "operational tactics for emergency responses",
+      "level": 4,
+      "prerequisites": ["incidents and accidents recording", "organisational resilience"]
+    },
+    {
+      "knowledge": "incidents and accidents recording",
+      "level": 3,
+      "prerequisites": ["risk management"]
+    },
+    {
+      "knowledge": "lean project management",
+      "level": 4,
+      "prerequisites": ["project management", "Process-based management"]
+    },
+    {
+      "knowledge": "copyright legislation",
+      "level": 2,
+      "prerequisites": ["legal requirements of ICT products"]
+    },
+    {
+      "knowledge": "Python (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "C++",
+      "level": 4,
+      "prerequisites": ["computer programming", "computer engineering"]
+    },
+    {
+      "knowledge": "project management",
+      "level": 3,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "business intelligence",
+      "level": 4,
+      "prerequisites": ["data analytics", "business processes"]
+    },
+    {
+      "knowledge": "leadership principles",
+      "level": 2,
+      "prerequisites": ["ethics"]
+    },
+    {
+      "knowledge": "safety engineering",
+      "level": 4,
+      "prerequisites": ["engineering principles", "risk management"]
+    },
+    {
+      "knowledge": "defence standard procedures",
+      "level": 4,
+      "prerequisites": ["safety engineering", "internal risk management policy"]
+    },
+    {
+      "knowledge": "embedded systems",
+      "level": 4,
+      "prerequisites": ["computer engineering", "ICT system programming"]
+    },
+    {
+      "knowledge": "Process-based management",
+      "level": 3,
+      "prerequisites": ["business process modelling"]
+    },
+    {
+      "knowledge": "information governance compliance",
+      "level": 5,
+      "prerequisites": ["information confidentiality", "GDPR", "ICT security legislation"]
+    },
+    {
+      "knowledge": "DB2",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "hardware testing methods",
+      "level": 3,
+      "prerequisites": ["hardware components", "check methods"]
+    },
+    {
+      "knowledge": "computer science",
+      "level": 2,
+      "prerequisites": ["mathematics"]
+    },
+    {
+      "knowledge": "mechatronics",
+      "level": 4,
+      "prerequisites": ["computer engineering", "mechanics", "electrical engineering"]
+    },
+    {
+      "knowledge": "machine learning",
+      "level": 6,
+      "prerequisites": ["data science", "algorithms"]
+    },
+    {
+      "knowledge": "computer technology",
+      "level": 2,
+      "prerequisites": ["computer science"]
+    },
+    {
+      "knowledge": "algorithms",
+      "level": 2,
+      "prerequisites": ["mathematics", "computer science"]
+    },
+    {
+      "knowledge": "ICT software specifications",
+      "level": 3,
+      "prerequisites": ["ICT system user requirements"]
+    },
+    {
+      "knowledge": "task algorithmisation",
+      "level": 3,
+      "prerequisites": ["algorithms", "computer programming"]
+    },
+    {
+      "knowledge": "principles of artificial intelligence",
+      "level": 5,
+      "prerequisites": ["algorithms", "computer science"]
+    },
+    {
+      "knowledge": "mobile device software frameworks",
+      "level": 5,
+      "prerequisites": ["mobile operating systems", "software frameworks"]
+    },
+    {
+      "knowledge": "sales strategies",
+      "level": 2,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "web analytics",
+      "level": 4,
+      "prerequisites": ["web programming", "statistics"]
+    },
+    {
+      "knowledge": "social media marketing techniques",
+      "level": 3,
+      "prerequisites": ["digital marketing techniques"]
+    },
+    {
+      "knowledge": "keywords in digital content",
+      "level": 3,
+      "prerequisites": ["content marketing strategy"]
+    },
+    {
+      "knowledge": "content marketing strategy",
+      "level": 3,
+      "prerequisites": ["digital marketing techniques"]
+    },
+    {
+      "knowledge": "digital marketing techniques",
+      "level": 2,
+      "prerequisites": ["sales strategies"]
+    },
+    {
+      "knowledge": "behavioural science",
+      "level": 2,
+      "prerequisites": ["cognitive psychology"]
+    },
+    {
+      "knowledge": "mobile marketing",
+      "level": 3,
+      "prerequisites": ["digital marketing techniques", "mobile operating systems"]
+    },
+    {
+      "knowledge": "mobile operating systems",
+      "level": 3,
+      "prerequisites": ["operating systems", "hardware platforms"]
+    },
+    {
+      "knowledge": "industrial software",
+      "level": 5,
+      "prerequisites": ["embedded systems", "Process-based management"]
+    },
+    {
+      "knowledge": "tools for software configuration management",
+      "level": 5,
+      "prerequisites": ["ICT system integration", "project configuration management"]
+    },
+    {
+      "knowledge": "ICT debugging tools",
+      "level": 4,
+      "prerequisites": ["computer programming", "software anomalies"]
+    },
+    {
+      "knowledge": "PHP",
+      "level": 4,
+      "prerequisites": ["computer programming", "web programming"]
+    },
+    {
+      "knowledge": "COBOL",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "SAS language",
+      "level": 4,
+      "prerequisites": ["computer programming", "statistics"]
+    },
+    {
+      "knowledge": "VBScript",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Groovy",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "BlackBerry",
+      "level": 4,
+      "prerequisites": ["mobile operating systems"]
+    },
+    {
+      "knowledge": "Ansible",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "SAP R3",
+      "level": 6,
+      "prerequisites": ["core banking software", "database management systems"]
+    },
+    {
+      "knowledge": "Haskell",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Swift (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming", "iOS"]
+    },
+    {
+      "knowledge": "AJAX",
+      "level": 4,
+      "prerequisites": ["JavaScript", "web programming"]
+    },
+    {
+      "knowledge": "Assembly (computer programming)",
+      "level": 5,
+      "prerequisites": ["computer engineering", "ICT system programming"]
+    },
+    {
+      "knowledge": "Salt (tools for software configuration management)",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "CoffeeScript",
+      "level": 4,
+      "prerequisites": ["JavaScript"]
+    },
+    {
+      "knowledge": "Ruby (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Puppet (tools for software configuration management)",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "iOS",
+      "level": 4,
+      "prerequisites": ["mobile operating systems"]
+    },
+    {
+      "knowledge": "Erlang",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Common Lisp",
+      "level": 4,
+      "prerequisites": ["Lisp"]
+    },
+    {
+      "knowledge": "Android (mobile operating systems)",
+      "level": 4,
+      "prerequisites": ["mobile operating systems"]
+    },
+    {
+      "knowledge": "Microsoft Visual C++",
+      "level": 5,
+      "prerequisites": ["C++", "integrated development environment software"]
+    },
+    {
+      "knowledge": "trading software",
+      "level": 6,
+      "prerequisites": ["business ICT systems", "database management systems"]
+    },
+    {
+      "knowledge": "APL",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "MATLAB",
+      "level": 5,
+      "prerequisites": ["mathematics", "computer programming", "scientific computing"]
+    },
+    {
+      "knowledge": "ABAP",
+      "level": 4,
+      "prerequisites": ["computer programming", "SAP R3"]
+    },
+    {
+      "knowledge": "ML (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Objective-C",
+      "level": 4,
+      "prerequisites": ["computer programming", "iOS"]
+    },
+    {
+      "knowledge": "Lisp",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "C#",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Scratch (computer programming)",
+      "level": 3,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Scala",
+      "level": 4,
+      "prerequisites": ["computer programming", "Java (computer programming)"]
+    },
+    {
+      "knowledge": "R",
+      "level": 4,
+      "prerequisites": ["computer programming", "statistics"]
+    },
+    {
+      "knowledge": "Perl",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Prolog (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "screen reader",
+      "level": 3,
+      "prerequisites": ["ICT accessibility standards"]
+    },
+    {
+      "knowledge": "Xcode",
+      "level": 4,
+      "prerequisites": ["integrated development environment software", "iOS"]
+    },
+    {
+      "knowledge": "object-oriented modelling",
+      "level": 4,
+      "prerequisites": ["unified modelling language", "computer programming"]
+    },
+    {
+      "knowledge": "Apache Maven",
+      "level": 5,
+      "prerequisites": ["tools for software configuration management", "Java (computer programming)"]
+    },
+    {
+      "knowledge": "STAF",
+      "level": 5,
+      "prerequisites": ["tools for ICT test automation", "Java (computer programming)"]
+    },
+    {
+      "knowledge": "OpenEdge Advanced Business Language",
+      "level": 4,
+      "prerequisites": ["computer programming", "database management systems"]
+    },
+    {
+      "knowledge": "Visual Basic",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "TypeScript",
+      "level": 4,
+      "prerequisites": ["JavaScript"]
+    },
+    {
+      "knowledge": "Smalltalk (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "Pascal (computer programming)",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "digital systems",
+      "level": 2,
+      "prerequisites": ["hardware components"]
+    },
+    {
+      "knowledge": "project configuration management",
+      "level": 4,
+      "prerequisites": ["project management", "tools for software configuration management"]
+    },
+    {
+      "knowledge": "Octopus Deploy",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "Chef (tools for software configuration management)",
+      "level": 6,
+      "prerequisites": ["tools for software configuration management", "DevOps"]
+    },
+    {
+      "knowledge": "Vagrant",
+      "level": 5,
+      "prerequisites": ["operating systems", "DevOps"]
+    },
+    {
+      "knowledge": "Codenvy",
+      "level": 5,
+      "prerequisites": ["integrated development environment software", "cloud technologies"]
+    },
+    {
+      "knowledge": "statistics",
+      "level": 2,
+      "prerequisites": ["mathematics"]
+    },
+    {
+      "knowledge": "inter-organisational middleware system",
+      "level": 6,
+      "prerequisites": ["ICT system integration", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "interfacing techniques",
+      "level": 4,
+      "prerequisites": ["ICT system integration", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "consultation methods",
+      "level": 2,
+      "prerequisites": ["leadership principles"]
+    },
+    {
+      "knowledge": "organisational policies",
+      "level": 2,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "hardware components",
+      "level": 1,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "software components libraries",
+      "level": 3,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "domain name service",
+      "level": 4,
+      "prerequisites": ["network engineering", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "network engineering",
+      "level": 4,
+      "prerequisites": ["ICT communications protocols", "ICT networking hardware"]
+    },
+    {
+      "knowledge": "engineering processes",
+      "level": 2,
+      "prerequisites": ["engineering principles"]
+    },
+    {
+      "knowledge": "system design",
+      "level": 4,
+      "prerequisites": ["ICT infrastructure", "software architecture models"]
+    },
+    {
+      "knowledge": "ICT accessibility standards",
+      "level": 3,
+      "prerequisites": ["ICT system user requirements"]
+    },
+    {
+      "knowledge": "Apache Tomcat",
+      "level": 5,
+      "prerequisites": ["Java (computer programming)", "web services"]
+    },
+    {
+      "knowledge": "systems development life-cycle",
+      "level": 4,
+      "prerequisites": ["system design", "engineering processes"]
+    },
+    {
+      "knowledge": "statistical process control",
+      "level": 4,
+      "prerequisites": ["statistics", "quality standards"]
+    },
+    {
+      "knowledge": "quality and cycle time optimisation",
+      "level": 4,
+      "prerequisites": ["statistical process control", "Process-based management"]
+    },
+    {
+      "knowledge": "blueprints",
+      "level": 2,
+      "prerequisites": ["technical drawings"]
+    },
+    {
+      "knowledge": "CAD software",
+      "level": 3,
+      "prerequisites": ["technical drawings", "3D modelling"]
+    },
+    {
+      "knowledge": "mathematics",
+      "level": 1,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "engineering principles",
+      "level": 1,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "mechanics",
+      "level": 2,
+      "prerequisites": ["mathematics", "engineering principles"]
+    },
+    {
+      "knowledge": "manufacturing processes",
+      "level": 3,
+      "prerequisites": ["mechanics", "engineering processes"]
+    },
+    {
+      "knowledge": "lathe machine parts",
+      "level": 2,
+      "prerequisites": ["mechanics"]
+    },
+    {
+      "knowledge": "electrical engineering",
+      "level": 2,
+      "prerequisites": ["mathematics", "mechanics"]
+    },
+    {
+      "knowledge": "3D modelling",
+      "level": 3,
+      "prerequisites": ["trigonometry", "computer graphics"]
+    },
+    {
+      "knowledge": "visual presentation techniques",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "ICT performance analysis methods",
+      "level": 4,
+      "prerequisites": ["statistics", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "data science",
+      "level": 5,
+      "prerequisites": ["data analytics", "computer programming", "statistics"]
+    },
+    {
+      "knowledge": "systems theory",
+      "level": 2,
+      "prerequisites": ["engineering principles"]
+    },
+    {
+      "knowledge": "natural language processing",
+      "level": 6,
+      "prerequisites": ["machine learning", "algorithms"]
+    },
+    {
+      "knowledge": "information extraction",
+      "level": 5,
+      "prerequisites": ["natural language processing", "unstructured data"]
+    },
+    {
+      "knowledge": "data engineering",
+      "level": 5,
+      "prerequisites": ["data storage", "data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "information structure",
+      "level": 3,
+      "prerequisites": ["data models"]
+    },
+    {
+      "knowledge": "web programming",
+      "level": 4,
+      "prerequisites": ["ICT communications protocols", "computer programming"]
+    },
+    {
+      "knowledge": "data mining",
+      "level": 5,
+      "prerequisites": ["data analytics", "database"]
+    },
+    {
+      "knowledge": "cognitive psychology",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "information categorisation",
+      "level": 3,
+      "prerequisites": ["information structure"]
+    },
+    {
+      "knowledge": "unstructured data",
+      "level": 3,
+      "prerequisites": ["data storage"]
+    },
+    {
+      "knowledge": "database",
+      "level": 3,
+      "prerequisites": ["data storage", "data models"]
+    },
+    {
+      "knowledge": "data ethics",
+      "level": 3,
+      "prerequisites": ["ethics", "data protection"]
+    },
+    {
+      "knowledge": "data quality assessment",
+      "level": 4,
+      "prerequisites": ["data analytics", "quality standards"]
+    },
+    {
+      "knowledge": "healthcare analytics",
+      "level": 6,
+      "prerequisites": ["data science", "business analytics"]
+    },
+    {
+      "knowledge": "business processes",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "ICT quality policy",
+      "level": 3,
+      "prerequisites": ["quality standards", "organisational policies"]
+    },
+    {
+      "knowledge": "investment analysis",
+      "level": 3,
+      "prerequisites": ["mathematics", "business strategy concepts"]
+    },
+    {
+      "knowledge": "ICT problem management techniques",
+      "level": 4,
+      "prerequisites": ["ICT infrastructure", "ICT debugging tools"]
+    },
+    {
+      "knowledge": "software UI design patterns",
+      "level": 4,
+      "prerequisites": ["software interaction design", "application usability"]
+    },
+    {
+      "knowledge": "interactive media",
+      "level": 3,
+      "prerequisites": ["software interaction design", "visual presentation techniques"]
+    },
+    {
+      "knowledge": "software interaction design",
+      "level": 4,
+      "prerequisites": ["human-computer interaction", "software UI design patterns"]
+    },
+    {
+      "knowledge": "graphics editor software",
+      "level": 3,
+      "prerequisites": ["visual presentation techniques"]
+    },
+    {
+      "knowledge": "web based collaborative platforms",
+      "level": 4,
+      "prerequisites": ["web programming", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "quality standards",
+      "level": 3,
+      "prerequisites": ["engineering principles"]
+    },
+    {
+      "knowledge": "Microsoft Visio",
+      "level": 3,
+      "prerequisites": ["business process modelling", "technical drawings"]
+    },
+    {
+      "knowledge": "Synfig",
+      "level": 4,
+      "prerequisites": ["graphics editor software"]
+    },
+    {
+      "knowledge": "Prototyping development",
+      "level": 4,
+      "prerequisites": ["software design methodologies", "Rapid application development"]
+    },
+    {
+      "knowledge": "augmented reality",
+      "level": 6,
+      "prerequisites": ["computer vision", "3D modelling", "mobile operating systems"]
+    },
+    {
+      "knowledge": "incremental development",
+      "level": 4,
+      "prerequisites": ["Agile development", "software design methodologies"]
+    },
+    {
+      "knowledge": "Adobe Illustrator",
+      "level": 4,
+      "prerequisites": ["graphics editor software"]
+    },
+    {
+      "knowledge": "Adobe Photoshop",
+      "level": 4,
+      "prerequisites": ["graphics editor software"]
+    },
+    {
+      "knowledge": "Rapid application development",
+      "level": 4,
+      "prerequisites": ["software design methodologies", "Prototyping development"]
+    },
+    {
+      "knowledge": "Iterative development",
+      "level": 4,
+      "prerequisites": ["Agile development", "software design methodologies"]
+    },
+    {
+      "knowledge": "Spiral development",
+      "level": 5,
+      "prerequisites": ["Waterfall development", "risk management"]
+    },
+    {
+      "knowledge": "Waterfall development",
+      "level": 4,
+      "prerequisites": ["systems development life-cycle"]
+    },
+    {
+      "knowledge": "software design methodologies",
+      "level": 5,
+      "prerequisites": ["system design", "computer programming"]
+    },
+    {
+      "knowledge": "SketchBook Pro",
+      "level": 4,
+      "prerequisites": ["graphics editor software"]
+    },
+    {
+      "knowledge": "GIMP (graphics editor software)",
+      "level": 4,
+      "prerequisites": ["graphics editor software"]
+    },
+    {
+      "knowledge": "usability engineering",
+      "level": 4,
+      "prerequisites": ["application usability", "software interaction design"]
+    },
+    {
+      "knowledge": "database quality standards",
+      "level": 4,
+      "prerequisites": ["database", "quality standards"]
+    },
+    {
+      "knowledge": "data warehouse",
+      "level": 5,
+      "prerequisites": ["database management systems", "data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "database management systems",
+      "level": 4,
+      "prerequisites": ["database", "SQL"]
+    },
+    {
+      "knowledge": "data models",
+      "level": 3,
+      "prerequisites": ["database"]
+    },
+    {
+      "knowledge": "MarkLogic",
+      "level": 5,
+      "prerequisites": ["database management systems", "NoSQL"]
+    },
+    {
+      "knowledge": "PostgreSQL",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "MySQL",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "Teradata Database",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "OpenEdge Database",
+      "level": 5,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "IBM Informix",
+      "level": 5,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "data visualisation software",
+      "level": 4,
+      "prerequisites": ["data analytics", "visual presentation techniques"]
+    },
+    {
+      "knowledge": "product data management",
+      "level": 4,
+      "prerequisites": ["product life-cycle", "database management systems"]
+    },
+    {
+      "knowledge": "CA Datacom/DB",
+      "level": 5,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "ObjectStore",
+      "level": 5,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "Microsoft Access",
+      "level": 4,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "SQL Server",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "Filemaker (database management systems)",
+      "level": 4,
+      "prerequisites": ["database management systems"]
+    },
+    {
+      "knowledge": "TripleStore",
+      "level": 5,
+      "prerequisites": ["database management systems", "resource description framework query language"]
+    },
+    {
+      "knowledge": "Oracle Relational Database",
+      "level": 5,
+      "prerequisites": ["database management systems", "SQL"]
+    },
+    {
+      "knowledge": "unified modelling language",
+      "level": 4,
+      "prerequisites": ["object-oriented modelling", "software design methodologies"]
+    },
+    {
+      "knowledge": "SPARK",
+      "level": 4,
+      "prerequisites": ["computer programming"]
+    },
+    {
+      "knowledge": "WildFly",
+      "level": 5,
+      "prerequisites": ["Java (computer programming)", "web services"]
+    },
+    {
+      "knowledge": "Joomla",
+      "level": 4,
+      "prerequisites": ["WebCMS", "PHP"]
+    },
+    {
+      "knowledge": "content development processes",
+      "level": 3,
+      "prerequisites": ["publishing strategy"]
+    },
+    {
+      "knowledge": "web services",
+      "level": 4,
+      "prerequisites": ["web programming", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "style sheet languages",
+      "level": 3,
+      "prerequisites": ["web programming"]
+    },
+    {
+      "knowledge": "WebCMS",
+      "level": 4,
+      "prerequisites": ["web programming", "database management systems"]
+    },
+    {
+      "knowledge": "LESS",
+      "level": 4,
+      "prerequisites": ["style sheet languages"]
+    },
+    {
+      "knowledge": "JSSS",
+      "level": 4,
+      "prerequisites": ["style sheet languages", "JavaScript"]
+    },
+    {
+      "knowledge": "WordPress",
+      "level": 4,
+      "prerequisites": ["WebCMS", "PHP"]
+    },
+    {
+      "knowledge": "Sass",
+      "level": 4,
+      "prerequisites": ["style sheet languages"]
+    },
+    {
+      "knowledge": "CSS",
+      "level": 3,
+      "prerequisites": ["style sheet languages", "web programming"]
+    },
+    {
+      "knowledge": "publishing strategy",
+      "level": 2,
+      "prerequisites": ["content marketing strategy"]
+    },
+    {
+      "knowledge": "authoring software",
+      "level": 3,
+      "prerequisites": ["content development processes"]
+    },
+    {
+      "knowledge": "distributed computing",
+      "level": 5,
+      "prerequisites": ["network engineering", "algorithms"]
+    },
+    {
+      "knowledge": "online analytical processing",
+      "level": 5,
+      "prerequisites": ["data warehouse", "MDX"]
+    },
+    {
+      "knowledge": "data extraction, transformation and loading tools",
+      "level": 5,
+      "prerequisites": ["data engineering", "database management systems"]
+    },
+    {
+      "knowledge": "QlikView Expressor",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "SQL",
+      "level": 4,
+      "prerequisites": ["database", "query languages"]
+    },
+    {
+      "knowledge": "IBM InfoSphere Information Server",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "ICT power consumption",
+      "level": 3,
+      "prerequisites": ["ICT infrastructure", "electrical engineering"]
+    },
+    {
+      "knowledge": "SAP Data Services",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools", "SAP R3"]
+    },
+    {
+      "knowledge": "SAS Data Management",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools", "SAS language"]
+    },
+    {
+      "knowledge": "SQL Server Integration Services",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools", "SQL Server"]
+    },
+    {
+      "knowledge": "IBM InfoSphere DataStage",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "Oracle Warehouse Builder",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools", "Oracle Relational Database"]
+    },
+    {
+      "knowledge": "Informatica PowerCenter",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "Pentaho Data Integration",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools"]
+    },
+    {
+      "knowledge": "Oracle Data Integrator",
+      "level": 6,
+      "prerequisites": ["data extraction, transformation and loading tools", "Oracle Relational Database"]
+    },
+    {
+      "knowledge": "Oracle Application Development Framework",
+      "level": 5,
+      "prerequisites": ["Java (computer programming)", "software frameworks", "Oracle Relational Database"]
+    },
+    {
+      "knowledge": "Ajax Framework",
+      "level": 5,
+      "prerequisites": ["JavaScript Framework", "AJAX"]
+    },
+    {
+      "knowledge": "technical drawings",
+      "level": 2,
+      "prerequisites": ["visual presentation techniques"]
+    },
+    {
+      "knowledge": "blockchain platforms",
+      "level": 6,
+      "prerequisites": ["distributed computing", "ICT encryption"]
+    },
+    {
+      "knowledge": "Drupal",
+      "level": 4,
+      "prerequisites": ["WebCMS", "PHP"]
+    },
+    {
+      "knowledge": "blockchain openness",
+      "level": 6,
+      "prerequisites": ["blockchain platforms", "Open source model"]
+    },
+    {
+      "knowledge": "NoSQL",
+      "level": 4,
+      "prerequisites": ["database", "data models"]
+    },
+    {
+      "knowledge": "smart contract",
+      "level": 7,
+      "prerequisites": ["blockchain platforms", "computer programming"]
+    },
+    {
+      "knowledge": "software architecture models",
+      "level": 4,
+      "prerequisites": ["system design", "software design methodologies"]
+    },
+    {
+      "knowledge": "business requirements techniques",
+      "level": 3,
+      "prerequisites": ["ICT system user requirements", "consultation methods"]
+    },
+    {
+      "knowledge": "software metrics",
+      "level": 4,
+      "prerequisites": ["quality standards", "software anomalies"]
+    },
+    {
+      "knowledge": "online moderation techniques",
+      "level": 3,
+      "prerequisites": ["ethics", "web based collaborative platforms"]
+    },
+    {
+      "knowledge": "3D lighting",
+      "level": 4,
+      "prerequisites": ["3D modelling", "computer graphics"]
+    },
+    {
+      "knowledge": "digital game genres",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "3D texturing",
+      "level": 4,
+      "prerequisites": ["3D modelling", "computer graphics"]
+    },
+    {
+      "knowledge": "computer graphics",
+      "level": 3,
+      "prerequisites": ["mathematics", "computer programming"]
+    },
+    {
+      "knowledge": "trigonometry",
+      "level": 2,
+      "prerequisites": ["mathematics"]
+    },
+    {
+      "knowledge": "innovation processes",
+      "level": 3,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "scientific research methodology",
+      "level": 3,
+      "prerequisites": ["scientific literature", "research design"]
+    },
+    {
+      "knowledge": "ICT market",
+      "level": 2,
+      "prerequisites": ["business strategy concepts"]
+    },
+    {
+      "knowledge": "emergent technologies",
+      "level": 4,
+      "prerequisites": ["scientific research methodology", "ICT market"]
+    },
+    {
+      "knowledge": "product usage risks analysis",
+      "level": 4,
+      "prerequisites": ["risk management", "product life-cycle"]
+    },
+    {
+      "knowledge": "network management system tools",
+      "level": 5,
+      "prerequisites": ["network engineering", "ICT performance analysis methods"]
+    },
+    {
+      "knowledge": "crowdsourcing strategy",
+      "level": 3,
+      "prerequisites": ["business strategy concepts"]
+    },
+    {
+      "knowledge": "statistical analysis system software",
+      "level": 5,
+      "prerequisites": ["SAS language", "statistics"]
+    },
+    {
+      "knowledge": "ICT capacity planning strategies",
+      "level": 4,
+      "prerequisites": ["ICT performance analysis methods", "ICT infrastructure"]
+    },
+    {
+      "knowledge": "insourcing strategy",
+      "level": 3,
+      "prerequisites": ["business strategy concepts"]
+    },
+    {
+      "knowledge": "outsourcing strategy",
+      "level": 3,
+      "prerequisites": ["business strategy concepts", "Outsourcing model"]
+    },
+    {
+      "knowledge": "labour legislation",
+      "level": 2,
+      "prerequisites": ["legal requirements of ICT products"]
+    },
+    {
+      "knowledge": "business strategy concepts",
+      "level": 2,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "ICT network routing",
+      "level": 5,
+      "prerequisites": ["network engineering", "ICT communications protocols"]
+    },
+    {
+      "knowledge": "ICT networking hardware",
+      "level": 3,
+      "prerequisites": ["hardware components", "network engineering"]
+    },
+    {
+      "knowledge": "ICT network simulation",
+      "level": 5,
+      "prerequisites": ["ICT network routing", "computer simulation"]
+    },
+    {
+      "knowledge": "Cisco",
+      "level": 5,
+      "prerequisites": ["ICT networking hardware", "ICT network routing"]
+    },
+    {
+      "knowledge": "procurement of ICT network equipment",
+      "level": 4,
+      "prerequisites": ["ICT networking hardware", "business processes"]
+    },
+    {
+      "knowledge": "model based system engineering",
+      "level": 5,
+      "prerequisites": ["systems theory", "system design"]
+    },
+    {
+      "knowledge": "image recognition",
+      "level": 7,
+      "prerequisites": ["computer vision", "machine learning"]
+    },
+    {
+      "knowledge": "Oracle WebLogic",
+      "level": 6,
+      "prerequisites": ["Java (computer programming)", "web services"]
+    },
+    {
+      "knowledge": "business analytics",
+      "level": 4,
+      "prerequisites": ["statistics", "business intelligence"]
+    },
+    {
+      "knowledge": "documentation types",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "Hadoop",
+      "level": 6,
+      "prerequisites": ["distributed computing", "data storage"]
+    },
+    {
+      "knowledge": "social network analysis",
+      "level": 5,
+      "prerequisites": ["statistics", "data analytics"]
+    },
+    {
+      "knowledge": "game theory",
+      "level": 3,
+      "prerequisites": ["mathematics", "leadership principles"]
+    },
+    {
+      "knowledge": "research design",
+      "level": 3,
+      "prerequisites": ["scientific research methodology"]
+    },
+    {
+      "knowledge": "multidisciplinary research",
+      "level": 4,
+      "prerequisites": ["scientific research methodology"]
+    },
+    {
+      "knowledge": "statistical modeling techniques",
+      "level": 4,
+      "prerequisites": ["statistics", "algorithms"]
+    },
+    {
+      "knowledge": "marketing analytics",
+      "level": 4,
+      "prerequisites": ["web analytics", "business analytics"]
+    },
+    {
+      "knowledge": "hardware components suppliers",
+      "level": 2,
+      "prerequisites": ["hardware components"]
+    },
+    {
+      "knowledge": "software components suppliers",
+      "level": 2,
+      "prerequisites": ["software components libraries"]
+    },
+    {
+      "knowledge": "solution deployment",
+      "level": 5,
+      "prerequisites": ["DevOps", "project configuration management"]
+    },
+    {
+      "knowledge": "ICT environmental policies",
+      "level": 3,
+      "prerequisites": ["corporate sustainability", "organisational policies"]
+    },
+    {
+      "knowledge": "resource-efficient technologies",
+      "level": 3,
+      "prerequisites": ["sustainable technologies", "ICT power consumption"]
+    },
+    {
+      "knowledge": "sustainability consulting",
+      "level": 3,
+      "prerequisites": ["corporate sustainability", "consultation methods"]
+    },
+    {
+      "knowledge": "sustainable technologies",
+      "level": 3,
+      "prerequisites": ["engineering principles"]
+    },
+    {
+      "knowledge": "green building standards",
+      "level": 3,
+      "prerequisites": ["sustainable technologies"]
+    },
+    {
+      "knowledge": "ICT sales methodologies",
+      "level": 3,
+      "prerequisites": ["sales strategies", "ICT market"]
+    },
+    {
+      "knowledge": "corporate sustainability",
+      "level": 2,
+      "prerequisites": ["ethics"]
+    },
+    {
+      "knowledge": "computer simulation",
+      "level": 4,
+      "prerequisites": ["mathematics", "computer programming"]
+    },
+    {
+      "knowledge": "artificial neural networks",
+      "level": 7,
+      "prerequisites": ["machine learning", "algorithms"]
+    },
+    {
+      "knowledge": "operational research",
+      "level": 4,
+      "prerequisites": ["mathematics", "statistics"]
+    },
+    {
+      "knowledge": "deep learning",
+      "level": 8,
+      "prerequisites": ["machine learning", "artificial neural networks"]
+    },
+    {
+      "knowledge": "computer vision",
+      "level": 6,
+      "prerequisites": ["image recognition", "digital image processing"]
+    },
+    {
+      "knowledge": "scientific literature",
+      "level": 1,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "quantitative analysis",
+      "level": 3,
+      "prerequisites": ["statistics", "mathematics"]
+    },
+    {
+      "knowledge": "empirical analysis",
+      "level": 3,
+      "prerequisites": ["scientific research methodology", "quantitative analysis"]
+    },
+    {
+      "knowledge": "mathematical modelling",
+      "level": 3,
+      "prerequisites": ["mathematics", "computer simulation"]
+    },
+    {
+      "knowledge": "scientific computing",
+      "level": 4,
+      "prerequisites": ["mathematics", "computer programming"]
+    },
+    {
+      "knowledge": "digital curation",
+      "level": 4,
+      "prerequisites": ["data storage", "information categorisation"]
+    },
+    {
+      "knowledge": "computational biology",
+      "level": 6,
+      "prerequisites": ["scientific computing", "algorithms"]
+    },
+    {
+      "knowledge": "state estimation",
+      "level": 5,
+      "prerequisites": ["engineering control theory", "statistics"]
+    },
+    {
+      "knowledge": "data analytics",
+      "level": 3,
+      "prerequisites": ["statistics", "data storage"]
+    },
+    {
+      "knowledge": "product life-cycle",
+      "level": 3,
+      "prerequisites": ["business processes"]
+    },
+    {
+      "knowledge": "signal processing",
+      "level": 4,
+      "prerequisites": ["mathematics", "electrical engineering"]
+    },
+    {
+      "knowledge": "engineering control theory",
+      "level": 4,
+      "prerequisites": ["mathematics", "systems theory"]
+    },
+    {
+      "knowledge": "real-time computing",
+      "level": 5,
+      "prerequisites": ["operating systems", "computer engineering"]
+    },
+    {
+      "knowledge": "field-programmable gate arrays",
+      "level": 5,
+      "prerequisites": ["hardware architectures", "computer engineering"]
+    },
+    {
+      "knowledge": "battery management systems",
+      "level": 4,
+      "prerequisites": ["electrical engineering", "embedded systems"]
+    },
+    {
+      "knowledge": "quantum computing",
+      "level": 9,
+      "prerequisites": ["mathematical physics", "computer science"]
+    },
+    {
+      "knowledge": "digitization",
+      "level": 2,
+      "prerequisites": []
+    },
+    {
+      "knowledge": "cognitive computing",
+      "level": 7,
+      "prerequisites": ["principles of artificial intelligence", "machine learning", "cognitive psychology"]
+    },
+    {
+      "knowledge": "mathematical physics",
+      "level": 3,
+      "prerequisites": ["mathematics"]
+    },
+    {
+      "knowledge": "business ICT systems",
+      "level": 4,
+      "prerequisites": ["ICT infrastructure", "business processes"]
+    },
+    {
+      "knowledge": "digital image processing",
+      "level": 5,
+      "prerequisites": ["computer graphics", "signal processing"]
+    },
+    {
+      "knowledge": "digital twin technology",
+      "level": 6,
+      "prerequisites": ["Internet of Things", "computer simulation", "data engineering"]
+    },
+    {
+      "knowledge": "image formation",
+      "level": 3,
+      "prerequisites": ["computer graphics"]
+    }
+  ]
+}
