@@ -1,7 +1,7 @@
 import asyncio
 from typing import Tuple, cast
 import flet as ft
-from data_loader import Job
+from data_loader import data_loader, Job
 from translate import run_translate, run_translate_job
 from job_matcher import find_suitable_jobs, merge_job_list
 from roadmap_generator import generate_learning_roadmap, format_roadmap_for_display, Roadmap
@@ -16,39 +16,22 @@ def toggle_theme(e: ft.Event[ft.IconButton]) -> None:
     e.page.update()
 
 class JobDetailTab:
-    def __init__(self):
-        self.job = Job("", "", "", [], [], [], [], [])
-        self.user_knowledge: list[str] = []
-        self.roadmap: Roadmap
+    def __init__(self, job: Job, user_knowledge: list[str]):
+        self.job = job
+        self.user_knowledge = user_knowledge
+        self.roadmap: Roadmap = generate_learning_roadmap(self.job, self.user_knowledge)
         self.widget = ft.Column(
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=10,
-            controls=[],
+            controls=[
+                ft.Text(self.job.name, size=32),
+                ft.Text(self.job.description, size=20),
+                ft.Container(height=10),
+                ft.Text("Your Learning Roadmap:", size=24),
+                ft.Text(format_roadmap_for_display(self.roadmap), size=16),
+            ],
             scroll=ft.ScrollMode.ADAPTIVE,
         )
-        self.has_in_tree = False
-
-    def _draw_widget(self) -> None:
-        self.widget.controls = [
-            ft.Text(self.job.name, size=32),
-            ft.Text(self.job.description, size=20),
-            ft.Container(height=10),
-            ft.Text("Learning Roadmap:", size=24),
-            ft.Text(format_roadmap_for_display(self.roadmap), size=16),
-        ]
-        if self.has_in_tree:
-            self.widget.update()
-        else:
-            self.has_in_tree = True
-
-
-    def set_data(self, job: Job, user_knowledge: list[str]):
-        self.job = job
-        self.user_knowledge = user_knowledge
-        self.roadmap = generate_learning_roadmap(self.job, self.user_knowledge)
-        self._draw_widget()
-
-jobdetail_tab = JobDetailTab()
 
 class JobSeekTab:
     def __init__(self):
@@ -156,10 +139,28 @@ class JobSeekTab:
         )
     
     async def push_navigation(self, e: ft.Event[ft.CupertinoListTile], job: Job, user_knowledge: list[str]) -> None:
-        jobdetail_tab.set_data(job, user_knowledge)
-        await e.page.push_route("/job-detail")
+        print(f"Navigating to job detail: {job.name}")
+        job_detail_view = JobDetailTab(job, user_knowledge)
+
+        e.page.views.append(
+            ft.View(
+                route="/job-detail",
+                controls=[
+                    ft.CupertinoAppBar(
+                        title=ft.Text("careersearch"),
+                        trailing=ft.IconButton(
+                            icon=ft.Icons.LIGHT_MODE_ROUNDED,
+                            on_click=lambda e: toggle_theme(e),
+                        ),
+                    ),
+                    job_detail_view.widget
+                ],
+            )
+        )
+        e.page.update()
 
     def draw_job_list(self) -> ft.ListView:
+        print(f"Drawing job list...{self.job_list}")
         job_list_views: list[ft.CupertinoListTile] = []
         for score, job in self.job_list:
             job_list_views.append(
@@ -167,7 +168,7 @@ class JobSeekTab:
                     title=ft.Text(job.name),
                     subtitle=ft.Text(f"Matched {score}%", size=16),
                     trailing=ft.Icon(ft.Icons.CHEVRON_RIGHT),
-                    on_click=lambda e: asyncio.create_task(self.push_navigation(e, job, self.chip_string))
+                    on_click=lambda e, current_job=job: asyncio.create_task(self.push_navigation(e, current_job, self.chip_string))
                 ),
             )
 
@@ -183,9 +184,9 @@ class JobSeekTab:
         e.control.update()
 
         async def process():
+            """
             temp = await run_translate(self.chip_string)
             temp2 = await run_translate_job(self.right_textfield.value)
-            # print(f"translate result: {temp}")
             if(temp is None or temp2 is None):
                 self.output_container.content = ft.Text("Error in translation")
             else:
@@ -194,6 +195,15 @@ class JobSeekTab:
                 joblist2 = temp2
                 self.job_list = merge_job_list(joblist1, joblist2)
                 self.output_container.content = self.draw_job_list()
+            """
+            ## debug
+            self.job_list = [
+                [95.0, data_loader.job_map.get("cloud DevOps engineer")],
+                [90.0, data_loader.job_map.get("cloud architect")],
+                [90.0, data_loader.job_map.get("cloud software developer")],
+            ]
+            self.output_container.content = self.draw_job_list()
+
             self.output_container.update()
             e.control.disabled = False
             e.control.update()
@@ -255,8 +265,6 @@ def main(page: ft.Page) -> None:
     page.appbar = appbar
 
     jobseek_tab = JobSeekTab()
-    global jobdetail_tab
-    jobdetail_tab = JobDetailTab()
 
     content_container = ft.Container(
         content=jobseek_tab.widget,
@@ -274,16 +282,6 @@ def main(page: ft.Page) -> None:
                 ],
             )
         )
-        if page.route == "/job-detail":
-            page.views.append(
-                ft.View(
-                    route="/job-detail",
-                    controls=[
-                        appbar,
-                        jobdetail_tab.widget
-                    ],
-                )
-            )
         page.update()
     
     async def view_pop(e):
