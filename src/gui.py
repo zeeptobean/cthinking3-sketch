@@ -1,8 +1,10 @@
+import asyncio
 from typing import Tuple, cast
 import flet as ft
 from data_loader import Job
 from translate import run_translate, run_translate_job
 from job_matcher import find_suitable_jobs, merge_job_list
+from roadmap_generator import generate_learning_roadmap, format_roadmap_for_display, Roadmap
 
 def toggle_theme(e: ft.Event[ft.IconButton]) -> None:
     if(e.page.theme_mode == ft.ThemeMode.LIGHT):
@@ -12,6 +14,41 @@ def toggle_theme(e: ft.Event[ft.IconButton]) -> None:
         e.page.theme_mode = ft.ThemeMode.LIGHT
         e.control.icon = ft.Icons.LIGHT_MODE_ROUNDED
     e.page.update()
+
+class JobDetailTab:
+    def __init__(self):
+        self.job = Job("", "", "", [], [], [], [], [])
+        self.user_knowledge: list[str] = []
+        self.roadmap: Roadmap
+        self.widget = ft.Column(
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=10,
+            controls=[],
+            scroll=ft.ScrollMode.ADAPTIVE,
+        )
+        self.has_in_tree = False
+
+    def _draw_widget(self) -> None:
+        self.widget.controls = [
+            ft.Text(self.job.name, size=32),
+            ft.Text(self.job.description, size=20),
+            ft.Container(height=10),
+            ft.Text("Learning Roadmap:", size=24),
+            ft.Text(format_roadmap_for_display(self.roadmap), size=16),
+        ]
+        if self.has_in_tree:
+            self.widget.update()
+        else:
+            self.has_in_tree = True
+
+
+    def set_data(self, job: Job, user_knowledge: list[str]):
+        self.job = job
+        self.user_knowledge = user_knowledge
+        self.roadmap = generate_learning_roadmap(self.job, self.user_knowledge)
+        self._draw_widget()
+
+jobdetail_tab = JobDetailTab()
 
 class JobSeekTab:
     def __init__(self):
@@ -117,6 +154,11 @@ class JobSeekTab:
                 self.output_container
             ]
         )
+    
+    async def push_navigation(self, e: ft.Event[ft.CupertinoListTile], job: Job, user_knowledge: list[str]) -> None:
+        jobdetail_tab.set_data(job, user_knowledge)
+        await e.page.push_route("/job-detail")
+
     def draw_job_list(self) -> ft.ListView:
         job_list_views: list[ft.CupertinoListTile] = []
         for score, job in self.job_list:
@@ -125,7 +167,7 @@ class JobSeekTab:
                     title=ft.Text(job.name),
                     subtitle=ft.Text(f"Matched {score}%", size=16),
                     trailing=ft.Icon(ft.Icons.CHEVRON_RIGHT),
-                    on_click=lambda e: None
+                    on_click=lambda e: asyncio.create_task(self.push_navigation(e, job, self.chip_string))
                 ),
             )
 
@@ -202,28 +244,62 @@ def main(page: ft.Page) -> None:
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.appbar = ft.CupertinoAppBar(
+
+    appbar = ft.CupertinoAppBar(
         title=ft.Text("careersearch"),
         trailing=ft.IconButton(
             icon=ft.Icons.LIGHT_MODE_ROUNDED,
             on_click=lambda e: toggle_theme(e),
         ),
     )
+    page.appbar = appbar
 
-    jokseek_tab = JobSeekTab()
+    jobseek_tab = JobSeekTab()
+    global jobdetail_tab
+    jobdetail_tab = JobDetailTab()
 
     content_container = ft.Container(
-        content=jokseek_tab.widget,
+        content=jobseek_tab.widget,
         expand=True,
     )
 
-    page.add(
-        ft.SafeArea(
-            content=content_container
+    def route_change():
+        page.views.clear()
+        page.views.append(
+            ft.View(
+                route="/",
+                controls=[
+                    appbar,
+                    content_container
+                ],
+            )
         )
-    )
+        if page.route == "/job-detail":
+            page.views.append(
+                ft.View(
+                    route="/job-detail",
+                    controls=[
+                        appbar,
+                        jobdetail_tab.widget
+                    ],
+                )
+            )
+        page.update()
+    
+    async def view_pop(e):
+        if e.view is not None:
+            # print("View pop:", e.view)
+            page.views.remove(e.view)
+            top_view = page.views[-1]
+            await page.push_route(top_view.route)
+
+    page.on_route_change = route_change
+    page.on_view_pop = view_pop
+
+    route_change()
 
 
-ft.run(main)
-# ft.app(target=main, view=ft.AppView.FLET_APP_WEB, host="0.0.0.0")
-# app = ft.app(main, export_asgi_app=True)
+if __name__ == "__main__":
+    ft.run(main)
+    # ft.app(target=main, view=ft.AppView.FLET_APP_WEB, host="0.0.0.0")
+    # app = ft.app(main, export_asgi_app=True)

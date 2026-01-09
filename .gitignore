@@ -3,3 +3,4 @@
 ailog_*
 knowledge_ext.json
 .vscode
+src/__pycache__
