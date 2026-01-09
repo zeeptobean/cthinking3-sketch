@@ -1,6 +1,8 @@
-from typing import cast
+from typing import Tuple, cast
 import flet as ft
-from translate import run_translate
+from data_loader import Job
+from translate import run_translate, run_translate_job
+from job_matcher import find_suitable_jobs, merge_job_list
 
 def toggle_theme(e: ft.Event[ft.IconButton]) -> None:
     if(e.page.theme_mode == ft.ThemeMode.LIGHT):
@@ -15,10 +17,14 @@ class JobSeekTab:
     def __init__(self):
         self.chip_list: list[ft.Chip] = []
         self.chip_string: list[str] = []
-        self.text_field = ft.CupertinoTextField(
+        self.job_list: list[Tuple[float, Job]] = []
+        self.left_textfield = ft.CupertinoTextField(
             placeholder_text="Enter skill or knowledge",
             autofocus=True,
             on_submit=self.add_chip_textfield
+        )
+        self.right_textfield = ft.CupertinoTextField(
+            placeholder_text="Enter job description",
         )
         self.scroll_container = ft.Container(
             content=ft.ListView(
@@ -39,6 +45,44 @@ class JobSeekTab:
             expand=1,
         )
 
+        self.left_container = ft.Container(
+            content=ft.Column(
+                controls=[
+                    ft.Text("Skills and knowledges", size=20),
+                    ft.Row(
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=8.0,
+                        controls=[
+                            self.left_textfield,
+                            ft.CupertinoTintedButton(
+                                icon=ft.Icons.ADD,
+                                content=ft.Text("Add"),
+                                on_click=self.add_chip_button,
+                            ),
+                        ],
+                        expand=1
+                    )
+                ]
+            ),
+            expand=1,
+            padding=4,
+        )
+
+        self.right_container = ft.Container(
+            content=ft.Column(
+                controls=[
+                    ft.Text("Job description", size=20),
+                    ft.CupertinoTextField(
+                        placeholder_text="Enter job description",
+                        min_lines=5,
+                        expand=True,
+                    ),
+                ]
+            ),
+            expand=1,
+            padding=4,
+        )
+
         self.output_container = ft.Container(
             content=ft.Container(),
             padding=4,
@@ -56,12 +100,8 @@ class JobSeekTab:
                     alignment=ft.MainAxisAlignment.CENTER,
                     spacing=8.0,
                     controls=[
-                        self.text_field,
-                        ft.CupertinoTintedButton(
-                            icon=ft.Icons.ADD,
-                            content=ft.Text("Add"),
-                            on_click=self.add_chip_button,
-                        ),
+                        self.left_container,
+                        self.right_container
                     ],
                     expand=1
                 ),
@@ -77,6 +117,22 @@ class JobSeekTab:
                 self.output_container
             ]
         )
+    def draw_job_list(self) -> ft.ListView:
+        job_list_views: list[ft.CupertinoListTile] = []
+        for score, job in self.job_list:
+            job_list_views.append(
+                ft.CupertinoListTile(
+                    title=ft.Text(job.name),
+                    subtitle=ft.Text(f"Matched {score}%", size=16),
+                    trailing=ft.Icon(ft.Icons.CHEVRON_RIGHT),
+                    on_click=lambda e: None
+                ),
+            )
+
+        return ft.ListView(
+            controls=cast(list[ft.Control], job_list_views)
+        )
+    
     def run_func(self, e: ft.Event[ft.CupertinoButton]) -> None:
         print(f"chip_string: {self.chip_string}")
         self.output_container.content = ft.CupertinoActivityIndicator(radius=16)
@@ -85,8 +141,17 @@ class JobSeekTab:
         e.control.update()
 
         async def process():
-            result = await run_translate(self.chip_string)
-            self.output_container.content = ft.Text(f"Result: {result}")
+            temp = await run_translate(self.chip_string)
+            temp2 = await run_translate_job(self.right_textfield.value)
+            # print(f"translate result: {temp}")
+            if(temp is None or temp2 is None):
+                self.output_container.content = ft.Text("Error in translation")
+            else:
+                [user_skill, user_knowledge] = temp
+                joblist1 = await find_suitable_jobs(user_skill, user_knowledge)
+                joblist2 = temp2
+                self.job_list = merge_job_list(joblist1, joblist2)
+                self.output_container.content = self.draw_job_list()
             self.output_container.update()
             e.control.disabled = False
             e.control.update()
@@ -109,12 +174,12 @@ class JobSeekTab:
         await e.control.focus()
 
     async def add_chip_button(self, e: ft.Event[ft.CupertinoButton]) -> None:
-        input_string = self.text_field.value.strip()
-        self.text_field.value = ""
+        input_string = self.left_textfield.value.strip()
+        self.left_textfield.value = ""
         if input_string and input_string not in self.chip_string:
             self.add_chip(input_string)
-        self.text_field.update()
-        await self.text_field.focus()
+        self.left_textfield.update()
+        await self.left_textfield.focus()
 
     def add_chip(self, input_string: str) -> None:
         self.chip_string.append(input_string)
@@ -145,38 +210,12 @@ def main(page: ft.Page) -> None:
         ),
     )
 
-    page.navigation_bar = ft.CupertinoNavigationBar(
-        on_change=lambda e: change_tab(e),
-        destinations=[
-            ft.NavigationBarDestination(
-                icon=ft.Icons.CASES_OUTLINED,
-                selected_icon=ft.Icons.CASES_ROUNDED,
-                label="Job seek",
-            ),
-            ft.NavigationBarDestination(
-                icon=ft.Icons.COMMUTE_OUTLINED,
-                selected_icon=ft.Icons.COMMUTE_ROUNDED,
-                label="ABC",
-            ),
-        ],
-    )
-
     jokseek_tab = JobSeekTab()
 
     content_container = ft.Container(
         content=jokseek_tab.widget,
         expand=True,
     )
-
-    def change_tab(e: ft.Event[ft.CupertinoNavigationBar]) -> None:
-        print("Selected tab:", e.control.selected_index)
-        match e.control.selected_index:
-            case 0:
-                content_container.content = jokseek_tab.widget
-            case 1:
-                content_container.content = abc_content()
-        page.update()
-        
 
     page.add(
         ft.SafeArea(
@@ -186,3 +225,5 @@ def main(page: ft.Page) -> None:
 
 
 ft.run(main)
+# ft.app(target=main, view=ft.AppView.FLET_APP_WEB, host="0.0.0.0")
+# app = ft.app(main, export_asgi_app=True)
