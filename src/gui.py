@@ -16,32 +16,117 @@ def toggle_theme(e: ft.Event[ft.IconButton]) -> None:
     e.page.update()
 
 class JobDetailTab:
+    def _get_missing_knowledge(self) -> list[str]:
+        total_knowledge_set = set(self.job.essential_knowledge + self.job.optional_knowledge)
+        user_knowledge_set = set(self.user_knowledge)
+        missing_knowledge = list(total_knowledge_set - user_knowledge_set)
+        return missing_knowledge
+    
     def __init__(self, job: Job, user_knowledge: list[str]):
         self.job = job
         self.user_knowledge = user_knowledge
+        self.missing_knowledge = self._get_missing_knowledge()
         self.roadmap: Roadmap = generate_learning_roadmap(self.job, self.user_knowledge)
+        self.user_knowledge_chips: list[ft.Chip] = []
+        for knowledge in self.user_knowledge:
+            self.user_knowledge_chips.append(
+                ft.Chip(
+                    label=ft.Text(knowledge),
+                    bgcolor=ft.Colors.GREEN_ACCENT_100,
+                )
+            )
+        self.missing_knowledge_chips: list[ft.Chip] = []
+        for knowledge in self.missing_knowledge:
+            self.missing_knowledge_chips.append(
+                ft.Chip(
+                    label=ft.Text(knowledge),
+                    bgcolor=ft.Colors.RED_ACCENT_100,
+                )
+            )
+
         self.widget = ft.Column(
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=10,
+            expand=True,
             controls=[
-                ft.Text(self.job.name, size=32),
-                ft.Text(self.job.description, size=20),
+                ft.Text(self.job.name, size=32, style=ft.TextStyle(weight=ft.FontWeight.BOLD)),
+                ft.Text(self.job.description, size=18),
                 ft.Container(height=10),
-                ft.Text("Your Learning Roadmap:", size=24),
-                ft.Text(format_roadmap_for_display(self.roadmap), size=16),
+                ft.Container(
+                    content= ft.Column(
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        controls=[
+                            ft.Text("✅ Knowledge sufficed", size=24),
+                            ft.ListView(
+                                controls=[
+                                    ft.Row(
+                                        controls=cast(list[ft.Control], self.user_knowledge_chips),
+                                        spacing=8.0,
+                                        run_spacing=8.0,
+                                        wrap=True,
+                                    )
+                                ],
+                                scroll=ft.ScrollMode.ADAPTIVE,
+                            )
+                        ]
+                    ),
+                    border=ft.Border.all(4, ft.Colors.GREEN),
+                    border_radius=16,
+                    padding=8,
+                    margin=8,
+                ),
+                ft.Container(
+                    content= ft.Column(
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        controls=[
+                            ft.Text("❌ Knowledge missing", size=24),
+                            ft.ListView(
+                                controls=[
+                                    ft.Row(
+                                        controls=cast(list[ft.Control], self.missing_knowledge_chips),
+                                        spacing=8.0,
+                                        run_spacing=8.0,
+                                        wrap=True,
+                                    )
+                                ],
+                                scroll=ft.ScrollMode.ADAPTIVE,
+                            )
+                        ]
+                    ),
+                    border=ft.Border.all(4, ft.Colors.RED),
+                    border_radius=16,
+                    padding=8,
+                    margin=8,
+                ),
+                ft.Container(
+                    content= ft.Column(
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        controls=[
+                            ft.Text("Your Learning Roadmap:", size=24, style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)),
+                            ft.Text(format_roadmap_for_display(self.roadmap), size=18),
+                        ],
+                        expand=True
+                    ),
+                    border=ft.Border.all(4, ft.Colors.BLUE),
+                    border_radius=16,
+                    padding=8,
+                    margin=8,
+                    width=float("inf")
+                ),
             ],
             scroll=ft.ScrollMode.ADAPTIVE,
         )
 
 class JobSeekTab:
-    def __init__(self):
+    def __init__(self, page: ft.Page):
         self.chip_list: list[ft.Chip] = []
         self.chip_string: list[str] = []
         self.job_list: list[Tuple[float, Job]] = []
         self.left_textfield = ft.CupertinoTextField(
             placeholder_text="Enter skill or knowledge",
             autofocus=True,
-            on_submit=self.add_chip_textfield
+            height=40,
+            on_submit=self.add_chip
         )
         self.right_textfield = ft.CupertinoTextField(
             placeholder_text="Enter job description",
@@ -54,34 +139,37 @@ class JobSeekTab:
                         spacing=8.0,
                         run_spacing=8.0,
                         wrap=True,
+                        alignment=ft.MainAxisAlignment.CENTER,
                     )
                 ],
-                # scroll=ft.ScrollMode.AUTO,
+                scroll=ft.ScrollMode.ADAPTIVE,
             ),
             padding=4,
             border_radius=8,
-            width=700,
+            # width=700,
             height=400,
-            expand=1,
+            expand=True,
         )
 
         self.left_container = ft.Container(
             content=ft.Column(
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
-                    ft.Text("Skills and knowledges", size=20),
+                    ft.Text("Skills and knowledges", size=20, expand=1),
                     ft.Row(
                         alignment=ft.MainAxisAlignment.CENTER,
+                        vertical_alignment=ft.CrossAxisAlignment.CENTER,
                         spacing=8.0,
                         controls=[
                             self.left_textfield,
                             ft.CupertinoTintedButton(
                                 icon=ft.Icons.ADD,
                                 content=ft.Text("Add"),
-                                on_click=self.add_chip_button,
+                                on_click=self.add_chip,
                             ),
                         ],
-                        expand=1
-                    )
+                    ),
+                    self.scroll_container
                 ]
             ),
             expand=1,
@@ -90,6 +178,7 @@ class JobSeekTab:
 
         self.right_container = ft.Container(
             content=ft.Column(
+                horizontal_alignment=ft.CrossAxisAlignment.START,
                 controls=[
                     ft.Text("Job description", size=20),
                     ft.CupertinoTextField(
@@ -106,15 +195,22 @@ class JobSeekTab:
         self.output_container = ft.Container(
             content=ft.Container(),
             padding=4,
-            expand=4
+            expand=3
+        )
+
+        layout_wrapper = ft.Container()
+        layout_wrapper.content = ft.Row(
+            controls=[self.left_container, self.right_container],
+            alignment=ft.MainAxisAlignment.CENTER,
+            spacing=16.0,
         )
 
         self.widget = ft.Column(
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            expand=1,
             controls=[
                 ft.Text("Find your jobs",
                     size=32,
-                    expand=1
                 ),
                 ft.Row(
                     alignment=ft.MainAxisAlignment.CENTER,
@@ -123,17 +219,16 @@ class JobSeekTab:
                         self.left_container,
                         self.right_container
                     ],
-                    expand=1
+                    expand=3
                 ),
-                ft.Container(height=10),
-                ft.CupertinoFilledButton(
-                    # bgcolor=ft.Colors.PRIMARY,
-                    # color=ft.Colors.ON_PRIMARY,
-                    content=ft.Text("Run"),
-                    on_click=self.run_func,
-                    expand=1
+                ft.Container(
+                    expand=1,
+                    content=ft.CupertinoFilledButton(
+                        content=ft.Text("Run"),
+                        on_click=self.run_func,
+                        expand=1
+                    )
                 ),
-                self.scroll_container,
                 self.output_container
             ]
         )
@@ -160,7 +255,6 @@ class JobSeekTab:
         e.page.update()
 
     def draw_job_list(self) -> ft.ListView:
-        print(f"Drawing job list...{self.job_list}")
         job_list_views: list[ft.CupertinoListTile] = []
         for score, job in self.job_list:
             job_list_views.append(
@@ -217,32 +311,23 @@ class JobSeekTab:
         self.scroll_container.content.controls[0].controls = self.chip_list
         self.scroll_container.update()
 
-    async def add_chip_textfield(self, e: ft.Event[ft.TextField]) -> None:
-        input_string = e.control.value.strip()
-        e.control.value = ""
-        if input_string and input_string not in self.chip_string:
-            self.add_chip(input_string)
-        e.control.update()
-        await e.control.focus()
-
-    async def add_chip_button(self, e: ft.Event[ft.CupertinoButton]) -> None:
+    async def add_chip(self, e) -> None:
         input_string = self.left_textfield.value.strip()
         self.left_textfield.value = ""
+
         if input_string and input_string not in self.chip_string:
-            self.add_chip(input_string)
+            self.chip_string.append(input_string)
+            self.chip_list.append(
+                ft.Chip(
+                    label=ft.Text(input_string),
+                    on_delete=self.remove_chip,
+                )
+            )
+            self.scroll_container.content.controls[0].controls = self.chip_list
+            self.scroll_container.update()
+
         self.left_textfield.update()
         await self.left_textfield.focus()
-
-    def add_chip(self, input_string: str) -> None:
-        self.chip_string.append(input_string)
-        self.chip_list.append(
-            ft.Chip(
-                label=ft.Text(input_string),
-                on_delete=self.remove_chip,
-            )
-        )
-        self.scroll_container.content.controls[0].controls = self.chip_list
-        self.scroll_container.update()
 
 def abc_content() -> ft.Container:
     return ft.Container(
@@ -264,7 +349,7 @@ def main(page: ft.Page) -> None:
     )
     page.appbar = appbar
 
-    jobseek_tab = JobSeekTab()
+    jobseek_tab = JobSeekTab(page)
 
     content_container = ft.Container(
         content=jobseek_tab.widget,
