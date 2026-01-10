@@ -9,6 +9,21 @@ from data_loader import Job, data_loader
 _taxonomy_mapper = None
 _job_taxonomy_mapper = None
 
+# If this is true, the transfomers will be init later on first use
+_translate_debug = False
+
+if not _translate_debug:
+    _taxonomy_mapper = TaxonomyMapper(
+        'nomic-ai/nomic-embed-text-v1.5',
+        0.65,
+        data_loader.base_knowledge,
+        data_loader.base_skill
+    )
+    _job_taxonomy_mapper = JobMapper(
+        'nomic-ai/nomic-embed-text-v1.5',
+        0.525
+    )
+
 def _get_taxonomy_mapper() -> TaxonomyMapper:
     global _taxonomy_mapper
     if _taxonomy_mapper is None:
