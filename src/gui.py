@@ -31,16 +31,16 @@ class JobDetailTab:
         for knowledge in self.user_knowledge:
             self.user_knowledge_chips.append(
                 ft.Chip(
-                    label=ft.Text(knowledge),
-                    bgcolor=ft.Colors.GREEN_ACCENT_100,
+                    label=ft.Text(knowledge, weight=ft.FontWeight.W_600),
+                    elevation=2
                 )
             )
         self.missing_knowledge_chips: list[ft.Chip] = []
         for knowledge in self.missing_knowledge:
             self.missing_knowledge_chips.append(
                 ft.Chip(
-                    label=ft.Text(knowledge),
-                    bgcolor=ft.Colors.RED_ACCENT_100,
+                    label=ft.Text(knowledge, weight=ft.FontWeight.W_600),
+                    elevation=2
                 )
             )
 
@@ -119,6 +119,7 @@ class JobDetailTab:
 
 class JobSeekTab:
     def __init__(self, page: ft.Page):
+        self.page = page
         self.chip_list: list[ft.Chip] = []
         self.chip_string: list[str] = []
         self.job_list: list[Tuple[float, Job]] = []
@@ -198,12 +199,8 @@ class JobSeekTab:
             expand=3
         )
 
-        layout_wrapper = ft.Container()
-        layout_wrapper.content = ft.Row(
-            controls=[self.left_container, self.right_container],
-            alignment=ft.MainAxisAlignment.CENTER,
-            spacing=16.0,
-        )
+        self.layout_wrapper = ft.Container(expand=3)
+        page.on_resize = self.update_layout
 
         self.widget = ft.Column(
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
@@ -212,15 +209,7 @@ class JobSeekTab:
                 ft.Text("Find your jobs",
                     size=32,
                 ),
-                ft.Row(
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    spacing=8.0,
-                    controls=[
-                        self.left_container,
-                        self.right_container
-                    ],
-                    expand=3
-                ),
+                self.layout_wrapper,
                 ft.Container(
                     expand=1,
                     content=ft.CupertinoFilledButton(
@@ -232,6 +221,22 @@ class JobSeekTab:
                 self.output_container
             ]
         )
+
+    def update_layout(self, e=None):
+        if self.page.width < 800:
+            self.layout_wrapper.content = ft.Column(
+                controls=[self.left_container, self.right_container],
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                spacing=16.0,
+            )
+        else:
+            self.layout_wrapper.content = ft.Row(
+                controls=[self.left_container, self.right_container],
+                alignment=ft.MainAxisAlignment.CENTER,
+                vertical_alignment=ft.CrossAxisAlignment.START,
+                spacing=16.0,
+                expand=True 
+            )
     
     async def push_navigation(self, e: ft.Event[ft.CupertinoListTile], job: Job, user_knowledge: list[str]) -> None:
         print(f"Navigating to job detail: {job.name}")
@@ -278,7 +283,6 @@ class JobSeekTab:
         e.control.update()
 
         async def process():
-            """
             temp = await run_translate(self.chip_string)
             temp2 = await run_translate_job(self.right_textfield.value)
             if(temp is None or temp2 is None):
@@ -289,14 +293,13 @@ class JobSeekTab:
                 joblist2 = temp2
                 self.job_list = merge_job_list(joblist1, joblist2)
                 self.output_container.content = self.draw_job_list()
-            """
             ## debug
-            self.job_list = [
-                [95.0, data_loader.job_map.get("cloud DevOps engineer")],
-                [90.0, data_loader.job_map.get("cloud architect")],
-                [90.0, data_loader.job_map.get("cloud software developer")],
-            ]
-            self.output_container.content = self.draw_job_list()
+            # self.job_list = [
+            #     [95.0, data_loader.job_map.get("cloud DevOps engineer")],
+            #     [90.0, data_loader.job_map.get("cloud architect")],
+            #     [90.0, data_loader.job_map.get("cloud software developer")],
+            # ]
+            # self.output_container.content = self.draw_job_list()
 
             self.output_container.update()
             e.control.disabled = False
@@ -380,6 +383,7 @@ def main(page: ft.Page) -> None:
     page.on_view_pop = view_pop
 
     route_change()
+    jobseek_tab.update_layout()
 
 
 if __name__ == "__main__":
