@@ -123,6 +123,7 @@ class JobSeekTab:
         self.chip_list: list[ft.Chip] = []
         self.chip_string: list[str] = []
         self.job_list: list[Tuple[float, Job]] = []
+        self.refined_user_list: list[str] = []
         self.left_textfield = ft.CupertinoTextField(
             placeholder_text="Enter skill or knowledge",
             autofocus=True,
@@ -267,7 +268,7 @@ class JobSeekTab:
                     title=ft.Text(job.name),
                     subtitle=ft.Text(f"Matched {score}%", size=16),
                     trailing=ft.Icon(ft.Icons.CHEVRON_RIGHT),
-                    on_click=lambda e, current_job=job: asyncio.create_task(self.push_navigation(e, current_job, self.chip_string))
+                    on_click=lambda e, current_job=job: asyncio.create_task(self.push_navigation(e, current_job, self.refined_user_list))
                 ),
             )
 
@@ -288,10 +289,13 @@ class JobSeekTab:
             if(temp is None or temp2 is None):
                 self.output_container.content = ft.Text("Error in translation")
             else:
-                [user_skill, user_knowledge] = temp
-                joblist1 = await find_suitable_jobs(user_skill, user_knowledge)
+                [refined_user_skill, refined_user_knowledge] = temp
+                self.refined_user_list = list(set(refined_user_skill + refined_user_knowledge))
+                joblist1 = await find_suitable_jobs(refined_user_skill, refined_user_knowledge)
                 joblist2 = temp2
                 self.job_list = merge_job_list(joblist1, joblist2)
+                if len(self.job_list) == 0:
+                    self.output_container.content = ft.Text("No suitable jobs found, Try adding more skills or knowledge or describing job better.", size=24)
                 self.output_container.content = self.draw_job_list()
             ## debug
             # self.job_list = [
